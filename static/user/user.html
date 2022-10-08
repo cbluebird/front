@@ -1,0 +1,231 @@
+﻿<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="keywords" content="个人主页" />
+    <title>个人简介_个人主页</title>
+	<link rel='stylesheet' href='css/css.css' type='text/css'/>
+	<link rel='stylesheet' href='css/font-awesome.min.css' type='text/css'/>
+	<link rel='stylesheet' href='css/style.css' type='text/css'/>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/skel.min.js"></script>
+	<script src="js/util.js"></script>
+	<script src="js/respond.min.js"></script>
+    <script src="js/user.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <article id="home" class="panel special" style="display: flex;">
+            <div class="image" style="background-image: url('images/image1.jpg'); background-position: center center;">
+                <img src="images/img1.jpg" alt="" data-position="center center" style="display: none;">
+            </div>
+            <div class="content">
+                <div class="inner">
+                    <header>
+                        <h1>用户个人主页</h1>
+                        <h3 id="username"></h3>
+                        <script>
+                            console.log(decodeURI(window.location.search.split("=")[1].split("&")[0]));
+                            var str=decodeURI(window.location.search.split("=")[1].split("&")[0]);
+                            document.getElementById('username').innerHTML=str+"，欢迎登录";
+                            console.log(window.location.search.split("=")[2])
+                        //    var userName = decodeURI(window.loaction.search.split("=")[1])
+                        //    console.log(userName)
+                        //    document.getElementById("username").innerHTML=userName;
+                        </script>
+                        <p>修改个人信息&管理个人简历</p>
+                    </header>
+                    <nav id="nav">
+                        <ul class="actions vertical special spinY">
+                            <li><a href="information.html" class="button">个人信息</a>
+                            </li>
+                            <li><a href="#resume" class="button">已有档案</a>
+                            </li>
+                            <li><input type="button" id="btn_edit" value="新建档案"  onclick="edit()" class="button"/>
+                            </li>
+                        </ul>
+                    </nav> 
+                </div>
+            </div>
+        </article>
+        <!--个人信息-->
+        <!--   <div><span></span>欢迎登录！</div>
+            <script>
+                var span=document.querySelector('span');
+                var myName=location.search.substr(1);
+                var arr=myName.split('=');
+                span.innerHTML=arr[1]+''
+            </script>--> 
+        <article id="information" class="panel secondary inactive" style="display: none;">
+            <div class="image" style="background-image: url('images/image5.jpg'); background-position: center center;">
+                <img src="images/img1.jpg" alt="" data-position="center center" style="display: none;">
+            </div>
+            <div class="content">
+                <ul class="actions spinX">
+                    <li><a href="#home" class="button small back">返回</a>
+                    </li>
+                </ul>
+                <div class="inner">
+                    <header>
+                        <h2>个人信息</h2>
+                        <blockquote>管理你的个人信息~</blockquote>
+                        <br>
+                        <strong><a href="information.html">修改个人信息</a></strong>
+                    </header>
+                </div>
+            </div>
+        </article>
+        <!--已有档案-->
+        <article id="resume" class="panel secondary inactive" style="display: none;">
+            <div class="image" style="background-image: url('images/image6.jpg'); background-position: center center;">
+                <img src="images/img1.jpg" alt="" data-position="center center" style="display: none;">
+            </div>
+            <div class="content">
+                <ul class="actions spinX">
+                    <li><a href="#home" class="button small back">返回</a>
+                    </li>
+                </ul>
+                <div class="inner">
+                    <header>
+                        <h2>已有档案</h2>
+                        <blockquote>查看已有简历</blockquote>
+                    </header>
+                    <a id="myarea1"  onclick="edit1()" ></a><br>
+                    <a id="myarea2"  onclick="edit2()" ></a><br>
+                    <a id="myarea3"  onclick="edit3()" ></a><br>
+                    <a id="myarea4"  onclick="edit4()" ></a><br>
+                    <a id="myarea5"  onclick="edit5()" ></a><br>
+                    <a id="myarea6"  onclick="edit6()" ></a><br>
+                    <script src="js/user.js"></script>
+                    <!--<p>
+                    <strong>简历标题</strong><br>
+                    <strong>创建时间</strong><br>             
+                    <strong>简历编号</strong><br>
+                    </p>-->
+                </div>
+            </div>
+        </article>
+        <!--新建档案-->
+        <article id="new_resume" class="panel secondary inactive" style="display: none;">
+            <div class="image" style="background-image: url('images/image6.jpg'); background-position: center center;">
+                <img src="images/img1.jpg" alt="" data-position="center center" style="display: none;">
+            </div>
+            <div class="content">
+                <ul class="actions spinX">
+                    <li><a href="#home" class="button small back">返回</a>
+                    </li>
+                </ul>
+                <div class="inner">
+                    <header>
+                        <h2>新建档案</h2>
+                        <blockquote>创建新档案</blockquote>
+                    </header>
+                    <p><a href="edit.html">模块一</a></p>
+                    <p><a href="edit.html">模块二</a></p>
+                    <p><a href="edit.html">模块三</a></p>
+                </div>
+            </div>
+        </article>
+    </div>
+    <script>
+        (function($) {
+            skel.breakpoints({
+                xlarge: '(max-width: 1680px)',
+                large: '(max-width: 1280px)',
+                medium: '(max-width: 980px)',
+                small: '(max-width: 736px)',
+                xsmall: '(max-width: 480px)',
+                xxsmall: '(max-width: 360px)',
+            });
+            $(function() {
+                var $window = $(window),
+                    $document = $(document),
+                    $body = $('body'),
+                    $wrapper = $('#wrapper'),
+                    $footer = $('#footer');
+                $window.on('load', function() {
+                    window.setTimeout(function() {
+                        $body.removeClass('is-loading-0');
+                        window.setTimeout(function() {
+                            $body.removeClass('is-loading-1');
+                        }, 1500);
+                    }, 100);
+                });
+                $('form').placeholder();
+                var $wrapper = $('#wrapper'),
+                    $panels = $wrapper.children('.panel'),
+                    locked = true;
+                $panels.not($panels.first()).addClass('inactive').hide();
+                $panels.each(function() {
+                    var $this = $(this),
+                        $image = $this.children('.image'),
+                        $img = $image.find('img'),
+                        position = $img.data('position');
+                    $image.css('background-image', 'url(' + $img.attr('src') + ')');
+                    if (position) $image.css('background-position', position);
+                    $img.hide();
+                });
+                window.setTimeout(function() {
+                    locked = false;
+                }, 1250);
+                $('a[href^="#"]').on('click', function(event) {
+                    var $this = $(this),
+                        id = $this.attr('href'),
+                        $panel = $(id),
+                        $ul = $this.parents('ul'),
+                        delay = 0;
+                    event.preventDefault();
+                    event.stopPropagation();
+                    if (locked) return;
+                    locked = true;
+                    $this.addClass('active');
+                    if ($ul.hasClass('spinX') || $ul.hasClass('spinY')) delay = 250;
+                    window.setTimeout(function() {
+                        $panels.addClass('inactive');
+                        $footer.addClass('inactive');
+                        window.setTimeout(function() {
+                            $panels.hide();
+                            $panel.show();
+                            $document.scrollTop(0);
+                            window.setTimeout(function() {
+                                $panel.removeClass('inactive');
+                                $this.removeClass('active');
+                                locked = false;
+                                $window.triggerHandler('--refresh');
+                                window.setTimeout(function() {
+                                    $footer.removeClass('inactive');
+                                }, 250);
+                            }, 100);
+                        }, 350);
+                    }, delay);
+                });
+                if (skel.vars.IEVersion < 12) {
+                    $window.on('--refresh', function() {
+                        $wrapper.css('height', 'auto');
+                        window.setTimeout(function() {
+                            var h = $wrapper.height(),
+                                wh = $window.height();
+                            if (h < wh) $wrapper.css('height', '100vh');
+                        }, 0);
+                        if (skel.vars.IEVersion < 10) {
+                            var $panel = $('.panel').not('.inactive'),
+                                $image = $panel.find('.image'),
+                                $content = $panel.find('.content'),
+                                ih = $image.height(),
+                                ch = $content.height(),
+                                x = Math.max(ih, ch);
+                            $image.css('min-height', x + 'px');
+                            $content.css('min-height', x + 'px');
+                        }
+                    });
+                    $window.on('load', function() {
+                        $window.triggerHandler('--refresh');
+                    });
+                    $('.spinX').removeClass('spinX');
+                    $('.spinY').removeClass('spinY');
+                }
+            });
+        })(jQuery);
+    </script>
+</body>
+</html>
